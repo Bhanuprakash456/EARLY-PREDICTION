@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Assessment - HeartGuard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 style="margin:0">New Assessment</h1>
+          <p style="margin:4px 0 0">Enter your latest medical readings — our model will estimate your risk in seconds.</p>
+        </div>
+        <a class="btn btn-ghost" href="dashboard.html">Cancel</a>
+      </div>
+
+      <form id="assessForm" class="glass fade-in">
+        <div class="section-title">Patient Information</div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="age">Age</label>
+            <input class="input" id="age" name="age" type="number" min="1" max="120" value="42" required />
+          </div>
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Non-binary</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section-title">Vitals & Labs</div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="bp">Resting Blood Pressure (mmHg)</label>
+            <input class="input" id="bp" name="bp" type="number" min="60" max="220" value="128" required />
+          </div>
+          <div class="field">
+            <label for="chol">Cholesterol (mg/dL)</label>
+            <input class="input" id="chol" name="chol" type="number" min="100" max="400" value="210" required />
+          </div>
+          <div class="field">
+            <label for="sugar">Fasting Blood Sugar (mg/dL)</label>
+            <input class="input" id="sugar" name="sugar" type="number" min="50" max="400" value="98" required />
+          </div>
+          <div class="field">
+            <label for="hr">Max Heart Rate Achieved (bpm)</label>
+            <input class="input" id="hr" name="hr" type="number" min="30" max="220" value="74" required />
+          </div>
+          <div class="field full">
+            <label for="cp">Chest Pain Type</label>
+            <select id="cp" name="cp" required>
+              <option>Typical angina</option>
+              <option>Atypical angina</option>
+              <option>Non-anginal pain</option>
+              <option>Asymptomatic</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ecg">Resting ECG Result</label>
+            <select id="ecg" name="ecg" required>
+              <option>Normal</option>
+              <option>ST-T wave abnormality</option>
+              <option>Left ventricular hypertrophy</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="exang">Exercise-Induced Angina</label>
+            <select id="exang" name="exang" required>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="oldpeak">ST Depression (oldpeak)</label>
+            <input class="input" id="oldpeak" name="oldpeak" type="number" step="0.1" min="0" max="10" value="1.0" required />
+          </div>
+          <div class="field">
+            <label for="slope">Slope of Peak ST Segment</label>
+            <select id="slope" name="slope" required>
+              <option>Upsloping</option>
+              <option>Flat</option>
+              <option>Downsloping</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ca">Number of Major Vessels (0–3)</label>
+            <select id="ca" name="ca" required>
+              <option>0</option><option>1</option><option>2</option><option>3</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="thal">Thalassemia</label>
+            <select id="thal" name="thal" required>
+              <option>Normal</option>
+              <option>Fixed defect</option>
+              <option>Reversible defect</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px">
+          <a class="btn btn-ghost" href="dashboard.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Run Prediction</button>
+        </div>
+      </form>
+    </main>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>

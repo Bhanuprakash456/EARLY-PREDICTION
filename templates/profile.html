@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - HeartGuard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 style="margin:0">Profile</h1>
+          <p style="margin:4px 0 0">Manage your account and personal information.</p>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-ghost" id="editProfileBtn">Edit Profile</button>
+          <a class="btn btn-danger" href="login.html" id="logoutBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Logout
+          </a>
+        </div>
+      </div>
+
+      <section class="glass fade-in">
+        <div class="profile-head">
+          <div class="avatar lg" id="profile-avatar">??</div>
+          <div>
+            <h1 id="profile-name">...</h1>
+            <p><span id="profile-email">...</span> · Member since <span id="profile-date">...</span></p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <span class="chip">Verified</span>
+              <span class="chip">Pro plan</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid grid-3 mt-24">
+        <div class="glass stat fade-in d1">
+          <div class="label">Total Assessments</div>
+          <div class="value" id="stat-total-assessments">0</div>
+          <div class="delta" id="stat-total-assessments-delta">--</div>
+        </div>
+        <div class="glass stat fade-in d2">
+          <div class="label">Latest Risk</div>
+          <div class="value" id="stat-avg-risk">0%</div>
+          <div class="delta down" id="stat-avg-risk-delta">--</div>
+        </div>
+        <div class="glass stat fade-in d3">
+          <div class="label">Health Score</div>
+          <div class="value" id="stat-health-score">100</div>
+          <div class="delta" id="stat-health-score-delta">--</div>
+        </div>
+      </div>
+
+      <div class="grid grid-2 mt-24">
+        <div class="glass fade-in">
+          <h3>Account Details</h3>
+          <div class="field"><label>Username</label><input class="input" id="detail-name" value="..." readonly></div>
+          <div class="field"><label>Email</label><input class="input" id="detail-email" value="..." readonly></div>
+          <div class="field"><label>Date of birth</label><input type="date" class="input auto-save" id="detail-dob" value=""></div>
+        </div>
+        <div class="glass fade-in d1">
+          <h3>Preferences</h3>
+          <div class="field">
+            <label>Units</label>
+            <select class="input auto-save" id="detail-units">
+              <option value="Metric (mg/dL, mmHg)">Metric (mg/dL, mmHg)</option>
+              <option value="Imperial (mg/dL, inHg)">Imperial (mg/dL, inHg)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Notifications</label>
+            <select class="input auto-save" id="detail-notifications">
+              <option value="Weekly summary + assessment reminders">Weekly summary + assessment reminders</option>
+              <option value="Important updates only">Important updates only</option>
+              <option value="None">None</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Data sharing</label>
+            <select class="input auto-save" id="detail-sharing">
+              <option value="Anonymized model improvement only">Anonymized model improvement only</option>
+              <option value="Share with researchers">Share with researchers</option>
+              <option value="Do not share">Do not share</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- Edit Profile Modal -->
+      <div id="editProfileModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+        <div class="glass" style="width:100%; max-width:400px; padding:24px;">
+          <h3>Edit Profile</h3>
+          <form id="editProfileForm">
+            <div class="field">
+              <label for="editName">Full Name</label>
+              <input class="input" id="editName" required>
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <label for="editDob">Date of Birth</label>
+              <input type="date" class="input" id="editDob">
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <label for="editPhoto">Profile Photo (Upload Image)</label>
+              <input type="file" class="input" id="editPhoto" accept="image/*">
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <label for="editUnits">Units Preference</label>
+              <select class="input" id="editUnits" style="background-color: var(--glass-bg); color: var(--text);">
+                <option value="Metric (mg/dL, mmHg)">Metric (mg/dL, mmHg)</option>
+                <option value="Imperial (mg/dL, inHg)">Imperial (mg/dL, inHg)</option>
+              </select>
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <label for="editNotifications">Notifications Preference</label>
+              <select class="input" id="editNotifications" style="background-color: var(--glass-bg); color: var(--text);">
+                <option value="Weekly summary + assessment reminders">Weekly summary + assessment reminders</option>
+                <option value="Important updates only">Important updates only</option>
+                <option value="None">None</option>
+              </select>
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <label for="editSharing">Data Sharing Preference</label>
+              <select class="input" id="editSharing" style="background-color: var(--glass-bg); color: var(--text);">
+                <option value="Anonymized model improvement only">Anonymized model improvement only</option>
+                <option value="Share with researchers">Share with researchers</option>
+                <option value="Do not share">Do not share</option>
+              </select>
+            </div>
+            <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
+              <button type="button" class="btn btn-ghost" id="closeEditModalBtn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="/static/script.js?v=2.0"></script>
+</body>
+</html>

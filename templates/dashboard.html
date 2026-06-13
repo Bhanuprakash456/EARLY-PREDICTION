@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - HeartGuard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main">
+      <div class="topbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input class="input" placeholder="Search assessments, insights..." />
+        </div>
+        <div class="topbar-actions">
+          <a class="btn btn-ghost" href="reports.html">View reports</a>
+          <a class="btn btn-primary" href="assessment.html">+ New Assessment</a>
+        </div>
+      </div>
+
+      <section class="welcome glass fade-in">
+        <h1>Welcome back, <span id="welcome-name">...</span> 👋</h1>
+        <p>Your heart health is trending in the right direction. You're due for a check-in this week.</p>
+        <a class="btn btn-primary" href="assessment.html">Start a new assessment</a>
+      </section>
+
+      <div class="grid grid-4">
+        <div class="glass stat fade-in d1">
+          <div class="label"><span class="ico">❤</span> Health Score</div>
+          <div class="value">82<span style="font-size:18px;color:var(--text-mute)">/100</span></div>
+          <div class="delta">+4 vs last month</div>
+        </div>
+        <div class="glass stat fade-in d2">
+          <div class="label"><span class="ico" style="background:rgba(251,191,36,.12);color:var(--warning)">⚠</span> Risk Score</div>
+          <div class="value">28%</div>
+          <div class="delta down">-6% vs last month</div>
+        </div>
+        <div class="glass stat fade-in d3">
+          <div class="label"><span class="ico" style="background:rgba(96,165,250,.12);color:var(--info)">∑</span> Total Assessments</div>
+          <div class="value">24</div>
+          <div class="delta">+3 this month</div>
+        </div>
+        <div class="glass stat fade-in d4">
+          <div class="label"><span class="ico" style="background:rgba(52,211,153,.12);color:var(--success)">✓</span> Recent Activity</div>
+          <div class="value">2d</div>
+          <div class="delta">Last assessment</div>
+        </div>
+      </div>
+
+      <div class="grid grid-2 mt-24">
+        <div class="glass chart-card fade-in">
+          <div class="chart-head">
+            <div>
+              <h3>Risk Trend</h3>
+              <p style="margin:0;font-size:13px">Predicted risk over the last 12 weeks</p>
+            </div>
+            <span class="chip">12 weeks</span>
+          </div>
+          <svg id="lineChart" class="linechart"></svg>
+        </div>
+        <div class="glass chart-card fade-in d1">
+          <div class="chart-head">
+            <div>
+              <h3>Risk Distribution</h3>
+              <p style="margin:0;font-size:13px">Across your 24 assessments</p>
+            </div>
+            <span class="chip">All time</span>
+          </div>
+          <svg id="donutChart" style="width:100%;height:240px"></svg>
+        </div>
+      </div>
+
+      <div class="glass insights mt-24 fade-in">
+        <div class="chart-head">
+          <h3>AI Insights</h3>
+          <span class="chip">Updated today</span>
+        </div>
+        <div id="ai-insights-container">
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="/static/script.js?v=4.0"></script>
+</body>
+</html>

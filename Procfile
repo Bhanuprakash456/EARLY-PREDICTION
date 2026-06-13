@@ -1,0 +1,1 @@
+web: gunicorn heartguard_backend.wsgi

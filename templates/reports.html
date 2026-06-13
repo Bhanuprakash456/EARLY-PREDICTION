@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reports - HeartGuard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-mount"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 style="margin:0">Reports</h1>
+          <p style="margin:4px 0 0">All your previous risk assessments in one place.</p>
+        </div>
+        <a class="btn btn-primary" href="assessment.html">+ New Assessment</a>
+      </div>
+
+      <div class="glass fade-in">
+        <div class="topbar" style="margin-bottom:16px">
+          <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="reportSearch" class="input" placeholder="Search by date, risk level..." />
+          </div>
+        </div>
+
+        <div style="overflow-x:auto">
+          <table class="table" id="reportsTable">
+            <thead>
+              <tr>
+                <th>Date</th><th>Risk %</th><th>Risk Level</th><th>BP</th><th>Cholesterol</th><th>HR</th>
+              </tr>
+            </thead>
+            <tbody id="reportsBody">
+              <!-- Dynamically populated by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="/static/script.js?v=2.0"></script>
+</body>
+</html>
